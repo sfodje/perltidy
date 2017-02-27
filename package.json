@@ -45,7 +45,8 @@
                 ],
                 "extensions": [
                     ".pl",
-                    ".pm"
+                    ".pm",
+                    ".t"
                 ],
                 "configuration": "./language-configuration.json"
             }
