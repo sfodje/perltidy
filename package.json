@@ -1,68 +1,72 @@
 {
-    "name": "perltidy",
-    "displayName": "perltidy",
-    "description": "Perl::Tidy",
-    "version": "0.0.1",
-    "publisher": "sfodje",
-    "engines": {
-        "vscode": "^1.5.0"
-    },
-    "categories": [
-        "Linters",
-        "Formatters",
-        "Other"
-    ],
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./out/src/extension",
-    "contributes": {
-        "configuration": {
-            "type": "object",
-            "title": "Perl Tidy Configuration",
-            "properties": {
-                "perltidy.executable": {
-                    "type": "string",
-                    "default": "perltidy",
-                    "description": "Path to 'linter' executable"
-                },
-                "perltidy.profile": {
-                    "type": "string",
-                    "description": "Path to .perltidyrc file"
-                },
-                "perltidy.additionalArguments": {
-                    "type": "Array",
-                    "default": [],
-                    "description": "Additional arguments for Perl::Tidy e.g. ['-st', '--indent-columns=3]"
-                }
-            }
+  "name": "perltidy",
+  "displayName": "perltidy",
+  "description": "Perl::Tidy",
+  "version": "0.0.3",
+  "publisher": "sfodje",
+  "engines": {
+    "vscode": "^1.5.0"
+  },
+  "categories": [
+    "Linters",
+    "Formatters",
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Perl Tidy Configuration",
+      "properties": {
+        "perltidy.executable": {
+          "type": "string",
+          "default": "perltidy",
+          "description": "Path to 'linter' executable"
         },
-        "languages": [
-            {
-                "id": "perl",
-                "aliases": [
-                    "PERL"
-                ],
-                "extensions": [
-                    ".pl",
-                    ".pm",
-                    ".t"
-                ],
-                "configuration": "./language-configuration.json"
-            }
-        ]
+        "perltidy.profile": {
+          "type": "string",
+          "description": "Path to .perltidyrc file"
+        },
+        "perltidy.additionalArguments": {
+          "type": "Array",
+          "default": [],
+          "description": "Additional arguments for Perl::Tidy e.g. ['-st', '--indent-columns=3]"
+        }
+      }
     },
-    "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
-        "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
-    }
+    "languages": [
+      {
+        "id": "perl",
+        "aliases": [
+          "PERL"
+        ],
+        "extensions": [
+          ".pl",
+          ".pm",
+          ".t"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.0.3",
+    "vscode": "^1.0.0",
+    "mocha": "^2.3.3",
+    "@types/node": "^6.0.40",
+    "@types/mocha": "^2.2.32"
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "which": "^1.2.12"
+  }
 }
