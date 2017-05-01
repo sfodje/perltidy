@@ -11,11 +11,11 @@ export default class Formatter {
      */
     constructor(config: any) {
         this.command = which.sync(config.get('executable', ''));
-        this.options.concat(config.get('additionalArguments', []));
+        this.options = this.options.concat(config.get('additionalArguments', []));
 
         let profile = config.get('profile', '');
         if (profile) {
-            this.options.push('--profile=' + profile);
+            this.options.push('-pro=' + profile);
         }
     }
 

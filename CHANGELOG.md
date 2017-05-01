@@ -5,3 +5,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 - Initial release
+
+## [0.0.7] - 2017-05-01
+### Added
+- Format selected text
+
+### Fixed
+- Format on Save
+- Additonal arguments

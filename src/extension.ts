@@ -7,14 +7,27 @@ export function activate(context: vscode.ExtensionContext) {
 
     let config = vscode.workspace.getConfiguration('perltidy');
     let formatter = new Formatter(config);
-    let provider = vscode.languages.registerDocumentFormattingEditProvider('perl', {
-        provideDocumentFormattingEdits(document: vscode.TextDocument): Promise<vscode.TextEdit[]> {
-            let text = document.getText();
+
+    vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
+        if (document.languageId !== 'perl') return;
+        let stdFormatConfig = vscode.workspace.getConfiguration('editor');
+        if (stdFormatConfig && stdFormatConfig['formatOnSave']) {
+            return vscode.commands.executeCommand('editor.action.formatDocument');
+        }
+    });
+
+    let provider = vscode.languages.registerDocumentRangeFormattingEditProvider('perl', {
+        provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range): Promise<vscode.TextEdit[]> {
+            if (range === null) {
+                let start = new vscode.Position(0, 0);
+                let end = new vscode.Position(document.lineCount - 1, document.lineAt(document.lineCount - 1).text.length);
+                range = new vscode.Range(start, end);
+            }
+            let text = document.getText(range);
+
             if (!text || text.length === 0) {
                 return;
             }
-            const range = new vscode.Range(0, 0, Number.MAX_VALUE, Number.MAX_VALUE);
-
 
             return new Promise((resolve, reject) => {
                 let promisedText = formatter.format(text);
@@ -23,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
                     reject(error);
                 });
                 promisedText.then((formattedText: string) => {
-                    resolve([new vscode.TextEdit(range, formattedText)]);
+                    resolve([new vscode.TextEdit(range, formattedText.trim())]);
                 });
             });
         }

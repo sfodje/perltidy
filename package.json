@@ -2,8 +2,17 @@
   "name": "perltidy",
   "displayName": "perltidy",
   "description": "Perl::Tidy",
-  "version": "0.0.3",
+  "version": "0.0.7",
   "publisher": "sfodje",
+  "bugs": {
+    "url": "https://github.com/sfodje/perltidy/issues",
+    "email": "sfodje@outlook.com"
+  },
+  "homepage": "https://github.com/sfodje/perltidy/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sfodje/perltidy"
+  },
   "engines": {
     "vscode": "^1.5.0"
   },
@@ -31,7 +40,7 @@
           "description": "Path to .perltidyrc file"
         },
         "perltidy.additionalArguments": {
-          "type": "Array",
+          "type": "array",
           "default": [],
           "description": "Additional arguments for Perl::Tidy e.g. ['-st', '--indent-columns=3]"
         }
