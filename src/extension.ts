@@ -2,6 +2,7 @@
 
 import * as vscode from 'vscode';
 import Formatter from './formatter';
+import { Output } from './formatter';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -30,13 +31,13 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             return new Promise((resolve, reject) => {
-                let promisedText = formatter.format(text);
-                promisedText.catch((error) => {
+                let promise = formatter.format(text);
+                promise.catch((error) => {
                     console.error(error);
                     reject(error);
                 });
-                promisedText.then((formattedText: string) => {
-                    resolve([new vscode.TextEdit(range, formattedText.trim())]);
+                promise.then((output: Output) => {
+                    resolve([new vscode.TextEdit(range, output.text)]);
                 });
             });
         }

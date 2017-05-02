@@ -1,6 +1,16 @@
 import * as which from 'which';
 import * as child_process from 'child_process';
 
+export class Output {
+    error: string;
+    text: string;
+
+    constructor(text: string, error: string) {
+        this.text = text.trim();
+        this.error = error.trim();
+    }
+}
+
 export default class Formatter {
     command: string;
     options: Array<string> = ['-st'];
@@ -19,7 +29,7 @@ export default class Formatter {
         }
     }
 
-    format(text: string): Promise<string> {
+    format(text: string): Promise<Output> {
 
         return new Promise((resolve, reject) => {
             try {
@@ -34,8 +44,14 @@ export default class Formatter {
                     formattedText += chunk;
                 });
 
+                let errorText: string = '';
+                worker.stderr.on('data', (chunk) => {
+                    errorText += chunk;
+                });
+
                 worker.stdout.on('end', () => {
-                    resolve(formattedText);
+                    resolve(new Output(formattedText, errorText));
+
                 });
             }
             catch (error) {

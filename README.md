@@ -5,7 +5,8 @@ This extension is a simple formatter for perl code using Perl::Tidy.
 ## Features
 
 * Format perl code using default formatting command
-* Format on save.
+* Format on save
+* Format selected text
 
 ## Changes
 

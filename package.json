@@ -2,8 +2,9 @@
   "name": "perltidy",
   "displayName": "perltidy",
   "description": "Perl::Tidy",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "sfodje",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sfodje/perltidy/issues",
     "email": "sfodje@outlook.com"
