@@ -20,3 +20,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ### Updated
 - Documentation
+
+## [0.0.9] - 2017-05-08
+### Added
+- Perltidy errors now displayed in window as VSCode error (before this was logged to the console)

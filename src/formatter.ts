@@ -55,7 +55,7 @@ export default class Formatter {
                 });
             }
             catch (error) {
-                reject(error);
+                resolve(new Output('', error));
             }
         });
     }

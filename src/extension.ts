@@ -37,6 +37,10 @@ export function activate(context: vscode.ExtensionContext) {
                     reject(error);
                 });
                 promise.then((output: Output) => {
+                    if (output.error) {
+                        vscode.window.showErrorMessage('Perltidy error: ' + output.error);
+                        return;
+                    }
                     resolve([new vscode.TextEdit(range, output.text)]);
                 });
             });
