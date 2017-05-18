@@ -7,18 +7,17 @@ This extension is a simple formatter for perl code using Perl::Tidy.
 * Format perl code using default formatting command
 * Format on save
 * Format selected text
+* Basic linting
 
 ## Changes
-
-* Fixed auto format on save bug
-* Fixed additional arguments bug
+See CHANGELOG.md
 
 ## Requirements
 
 This extension requires that Perl::Tidy is installed.
 To install Perl::Tidy:
 * cpan install Perl::Tidy
-* ppm install Perl::Tidy (if using ActivePerl)
+* ppm install Perl-Tidy (if using ActivePerl)
 * sudo apt install perltidy -y (Ubuntu)
 * sudo yum install perltidy -y (CentOS)
 
@@ -27,5 +26,5 @@ To install Perl::Tidy:
 This extension contributes the following settings:
 
 * `perltidy.executable`: path to perltidy executable
-* `perltidy.profile`: path to .perltidyrc file. 
+* `perltidy.profile`: path to .perltidyrc file.
 * `perltidy.additionalArguments`: array listing any additional arguments to be used with the perltidy command

@@ -13,7 +13,8 @@ export function activate(context: vscode.ExtensionContext) {
         if (document.languageId !== 'perl') return;
         let stdFormatConfig = vscode.workspace.getConfiguration('editor');
         if (stdFormatConfig && stdFormatConfig['formatOnSave']) {
-            return vscode.commands.executeCommand('editor.action.formatDocument');
+            return vscode.commands.executeCommand('editor.action.formatDocument')
+                .then(() => { document.save() });
         }
     });
 

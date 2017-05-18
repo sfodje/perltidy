@@ -24,3 +24,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [0.0.9] - 2017-05-08
 ### Added
 - Perltidy errors now displayed in window as VSCode error (before this was logged to the console)
+
+## [1.0.9] - 2017-05-18
+### Added
+- Format-on-save now saves the document after format (before it wouldn't save on larger documents)
+- Officially version 1 of plugin

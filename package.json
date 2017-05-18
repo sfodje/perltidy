@@ -1,8 +1,8 @@
 {
   "name": "perltidy",
   "displayName": "perltidy",
-  "description": "Perl::Tidy",
-  "version": "0.0.9",
+  "description": "A Perl code formatter for VSCode",
+  "version": "1.0.9",
   "publisher": "sfodje",
   "license": "MIT",
   "bugs": {
