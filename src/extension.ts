@@ -9,14 +9,13 @@ export function activate(context: vscode.ExtensionContext) {
     let config = vscode.workspace.getConfiguration('perltidy');
     let formatter = new Formatter(config);
 
-    vscode.workspace.onDidSaveTextDocument((document: vscode.TextDocument) => {
+    /*vscode.workspace.on((document: vscode.TextDocument) => {
         if (document.languageId !== 'perl') return;
         let stdFormatConfig = vscode.workspace.getConfiguration('editor');
         if (stdFormatConfig && stdFormatConfig['formatOnSave']) {
-            return vscode.commands.executeCommand('editor.action.formatDocument')
-                .then(() => { document.save() });
+            return vscode.commands.executeCommand('editor.action.formatDocument');
         }
-    });
+    });*/
 
     let provider = vscode.languages.registerDocumentRangeFormattingEditProvider('perl', {
         provideDocumentRangeFormattingEdits(document: vscode.TextDocument, range: vscode.Range): Promise<vscode.TextEdit[]> {
