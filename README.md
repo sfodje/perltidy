@@ -10,7 +10,7 @@ This extension is a simple formatter for perl code using Perl::Tidy.
 * Basic linting
 
 ## Changes
-See CHANGELOG.md
+See [CHANGELOG.md](CHANGELOG.md)
 
 ## Requirements
 

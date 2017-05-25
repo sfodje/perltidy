@@ -29,3 +29,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Added
 - Format-on-save now saves the document after format (before it wouldn't save on larger documents)
 - Officially version 1 of plugin
+
+## [1.1.0] - 2017-05-24
+### Added
+- Fix to format-on-save infinite loop
+- Fix to save document after formatted on save

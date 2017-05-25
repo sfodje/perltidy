@@ -1,15 +1,6 @@
 import * as which from 'which';
 import * as child_process from 'child_process';
-
-export class Output {
-    error: string;
-    text: string;
-
-    constructor(text: string, error: string) {
-        this.text = text.trim();
-        this.error = error.trim();
-    }
-}
+import { TextDocument, Range, TextEdit, Position, window } from 'vscode';
 
 export default class Formatter {
     command: string;
@@ -29,7 +20,17 @@ export default class Formatter {
         }
     }
 
-    format(text: string): Promise<Output> {
+    format(document: TextDocument, range?: Range): Promise<TextEdit[]> {
+        if (range === null) {
+            let start = new Position(0, 0);
+            let end = new Position(document.lineCount - 1, document.lineAt(document.lineCount - 1).text.length);
+            range = new Range(start, end);
+        }
+        let text = document.getText(range);
+
+        if (!text || text.length === 0) {
+            return;
+        }
 
         return new Promise((resolve, reject) => {
             try {
@@ -50,12 +51,16 @@ export default class Formatter {
                 });
 
                 worker.stdout.on('end', () => {
-                    resolve(new Output(formattedText, errorText));
-
+                    if (errorText) {
+                        window.showErrorMessage(errorText);
+                        return;
+                    }
+                    resolve([new TextEdit(range, formattedText)]);
                 });
             }
             catch (error) {
-                resolve(new Output('', error));
+                window.showErrorMessage(error);
+                return;
             }
         });
     }
