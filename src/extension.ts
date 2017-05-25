@@ -7,7 +7,6 @@ export function activate(context: vscode.ExtensionContext) {
 
     let config = vscode.workspace.getConfiguration('perltidy');
     let formatter = new Formatter(config);
-    let formatOnSave = true;
 
     vscode.workspace.onWillSaveTextDocument((event: vscode.TextDocumentWillSaveEvent) => {
         if (event.document.languageId !== 'perl') return;
