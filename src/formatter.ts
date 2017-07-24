@@ -1,10 +1,11 @@
 import * as which from 'which';
 import * as child_process from 'child_process';
 import { TextDocument, Range, TextEdit, Position, window } from 'vscode';
+import { dirname } from 'path';
 
 export default class Formatter {
     command: string;
-    options: Array<string> = ['-st'];
+    args: Array<string> = ['-st'];
     process: Object;
 
     /**
@@ -12,11 +13,11 @@ export default class Formatter {
      */
     constructor(config: any) {
         this.command = which.sync(config.get('executable', ''));
-        this.options = this.options.concat(config.get('additionalArguments', []));
+        this.args = this.args.concat(config.get('additionalArguments', []));
 
         let profile = config.get('profile', '');
         if (profile) {
-            this.options.push('-pro=' + profile);
+            this.args.push('-pro=' + profile);
         }
     }
 
@@ -32,10 +33,14 @@ export default class Formatter {
             return;
         }
 
+        let options = {
+            cwd: dirname(document.uri.fsPath)
+        };
+
         return new Promise((resolve, reject) => {
             try {
                 let spawn = child_process.spawn;
-                let worker = spawn(this.command, this.options);
+                let worker = spawn(this.command, this.args, options);
 
                 worker.stdin.write(text);
                 worker.stdin.end();
