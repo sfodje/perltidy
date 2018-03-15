@@ -58,6 +58,7 @@ export default class Formatter {
                 worker.stdout.on('end', () => {
                     if (errorText) {
                         window.showErrorMessage(errorText);
+                        reject();
                         return;
                     }
                     resolve([new TextEdit(range, formattedText)]);
@@ -65,6 +66,7 @@ export default class Formatter {
             }
             catch (error) {
                 window.showErrorMessage(error);
+                reject();
                 return;
             }
         });
