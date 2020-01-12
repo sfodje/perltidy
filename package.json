@@ -40,6 +40,11 @@
           "type": "string",
           "description": "Path to .perltidyrc file"
         },
+        "perltidy.languageIdentifiers": {
+          "type": "array",
+          "default": ["perl"],
+          "description": "Language identifiers"
+        },
         "perltidy.additionalArguments": {
           "type": "array",
           "default": [],
