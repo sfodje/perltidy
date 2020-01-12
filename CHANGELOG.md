@@ -3,6 +3,11 @@ All notable changes to the "perltidy" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [1.2.2] - 2020-01-12
+### Added
+- Support for multiple language identifiers
+- Minor improvements to README.md
+
 ## [1.2.1] - 2017-07-27
 ### Added
 - Fix to prevent perpetual processes
