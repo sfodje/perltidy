@@ -58,6 +58,7 @@
       {
         "id": "perl",
         "aliases": [
+          "Perl",
           "PERL"
         ],
         "extensions": [
